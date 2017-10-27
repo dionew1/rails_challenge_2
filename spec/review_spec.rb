@@ -15,6 +15,15 @@ describe Review do
     expect(review).to be_valid
   end
 
+  it "can provide book rating" do
+    user = User.create(name: "Dee")
+    book = Book.create(title: "Book1")
+    review = Review.new(body: "Great book!", rating: 4, book: book, user: user)
+
+    expect(review).to be_valid
+    expect(review.rating).to eq 4
+  end
+
   it "has relationship to book" do
     user = User.create(name: "Dee")
     book = Book.create(title: "Book1")
